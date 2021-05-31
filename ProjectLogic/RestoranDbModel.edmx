@@ -1,0 +1,697 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RestoranDbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="RestoranDbModelStoreContainer">
+    <EntitySet Name="Vlasnici" EntityType="RestoranDbModel.Store.Vlasnici" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Restorani" EntityType="RestoranDbModel.Store.Restorani" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Radnici" EntityType="RestoranDbModel.Store.Radnici" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Kupci" EntityType="RestoranDbModel.Store.Kupci" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Proizvodi" EntityType="RestoranDbModel.Store.Proizvodi" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Nudis" EntityType="RestoranDbModel.Store.Nudis" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Kupovine" EntityType="RestoranDbModel.Store.Kupovine" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Radnici_Kuvar" EntityType="RestoranDbModel.Store.Radnici_Kuvar" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Proizvodi_Jelo" EntityType="RestoranDbModel.Store.Proizvodi_Jelo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Radnici_Konobar" EntityType="RestoranDbModel.Store.Radnici_Konobar" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Proizvodi_Pice" EntityType="RestoranDbModel.Store.Proizvodi_Pice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RestoranRadnik" EntityType="RestoranDbModel.Store.RestoranRadnik" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="VlasnikRestoran" Association="RestoranDbModel.Store.VlasnikRestoran">
+      <End Role="Vlasnik" EntitySet="Vlasnici" />
+      <End Role="Restoran" EntitySet="Restorani" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RestoranRadnik_Restoran" Association="RestoranDbModel.Store.FK_RestoranRadnik_Restoran">
+      <End Role="Restoran" EntitySet="Restorani" />
+      <End Role="RestoranRadnik" EntitySet="RestoranRadnik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RestoranRadnik_Radnik" Association="RestoranDbModel.Store.FK_RestoranRadnik_Radnik">
+      <End Role="Radnik" EntitySet="Radnici" />
+      <End Role="RestoranRadnik" EntitySet="RestoranRadnik" />
+    </AssociationSet>
+    <AssociationSet Name="RestoranNudi" Association="RestoranDbModel.Store.RestoranNudi">
+      <End Role="Restoran" EntitySet="Restorani" />
+      <End Role="Nudi" EntitySet="Nudis" />
+    </AssociationSet>
+    <AssociationSet Name="NudiProizvod" Association="RestoranDbModel.Store.NudiProizvod">
+      <End Role="Nudi" EntitySet="Nudis" />
+      <End Role="Proizvod" EntitySet="Proizvodi" />
+    </AssociationSet>
+    <AssociationSet Name="KuvarJelo" Association="RestoranDbModel.Store.KuvarJelo">
+      <End Role="Kuvar" EntitySet="Radnici_Kuvar" />
+      <End Role="Jelo" EntitySet="Proizvodi_Jelo" />
+    </AssociationSet>
+    <AssociationSet Name="NudiKupuje" Association="RestoranDbModel.Store.NudiKupuje">
+      <End Role="Nudi" EntitySet="Nudis" />
+      <End Role="Kupuje" EntitySet="Kupovine" />
+    </AssociationSet>
+    <AssociationSet Name="KupujeKupac" Association="RestoranDbModel.Store.KupujeKupac">
+      <End Role="Kupuje" EntitySet="Kupovine" />
+      <End Role="Kupac" EntitySet="Kupci" />
+    </AssociationSet>
+    <AssociationSet Name="KupujeKonobar" Association="RestoranDbModel.Store.KupujeKonobar">
+      <End Role="Kupuje" EntitySet="Kupovine" />
+      <End Role="Konobar" EntitySet="Radnici_Konobar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kuvar_inherits_Radnik" Association="RestoranDbModel.Store.FK_Kuvar_inherits_Radnik">
+      <End Role="Radnik" EntitySet="Radnici" />
+      <End Role="Kuvar" EntitySet="Radnici_Kuvar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jelo_inherits_Proizvod" Association="RestoranDbModel.Store.FK_Jelo_inherits_Proizvod">
+      <End Role="Proizvod" EntitySet="Proizvodi" />
+      <End Role="Jelo" EntitySet="Proizvodi_Jelo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Konobar_inherits_Radnik" Association="RestoranDbModel.Store.FK_Konobar_inherits_Radnik">
+      <End Role="Radnik" EntitySet="Radnici" />
+      <End Role="Konobar" EntitySet="Radnici_Konobar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pice_inherits_Proizvod" Association="RestoranDbModel.Store.FK_Pice_inherits_Proizvod">
+      <End Role="Proizvod" EntitySet="Proizvodi" />
+      <End Role="Pice" EntitySet="Proizvodi_Pice" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Vlasnici">
+    <Key>
+      <PropertyRef Name="Jmbg" />
+    </Key>
+    <Property Name="Jmbg" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="Ime" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Prezime" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="BrojTelefona" Type="nvarchar" Nullable="true" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Restorani">
+    <Key>
+      <PropertyRef Name="Naziv" />
+    </Key>
+    <Property Name="Naziv" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Adresa" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Grad" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="BrojTelefona" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="VlasnikJmbg" Type="nvarchar" Nullable="false" MaxLength="13" />
+  </EntityType>
+  <EntityType Name="Radnici">
+    <Key>
+      <PropertyRef Name="Jmbg" />
+    </Key>
+    <Property Name="Jmbg" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="Ime" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Prezime" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="BrojTelefona" Type="nvarchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Kupci">
+    <Key>
+      <PropertyRef Name="Jmbg" />
+    </Key>
+    <Property Name="Jmbg" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="Ime" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Prezime" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="BrojTelefona" Type="nvarchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Proizvodi">
+    <Key>
+      <PropertyRef Name="Naziv" />
+    </Key>
+    <Property Name="Naziv" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Cena" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Nudis">
+    <Key>
+      <PropertyRef Name="RestoranNaziv" />
+      <PropertyRef Name="ProizvodNaziv" />
+    </Key>
+    <Property Name="RestoranNaziv" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="ProizvodNaziv" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Kupovine">
+    <Key>
+      <PropertyRef Name="NudiRestoranNaziv" />
+      <PropertyRef Name="NudiProizvodNaziv" />
+      <PropertyRef Name="KupacJmbg" />
+      <PropertyRef Name="KonobarJmbg" />
+    </Key>
+    <Property Name="NudiRestoranNaziv" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="NudiProizvodNaziv" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="KupacJmbg" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="KonobarJmbg" Type="nvarchar" Nullable="false" MaxLength="13" />
+  </EntityType>
+  <EntityType Name="Radnici_Kuvar">
+    <Key>
+      <PropertyRef Name="Jmbg" />
+    </Key>
+    <Property Name="BrojNapravljenihJela" Type="int" Nullable="false" />
+    <Property Name="Jmbg" Type="nvarchar" Nullable="false" MaxLength="13" />
+  </EntityType>
+  <EntityType Name="Proizvodi_Jelo">
+    <Key>
+      <PropertyRef Name="Naziv" />
+    </Key>
+    <Property Name="Sastojci" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="KuvarJmbg" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="Naziv" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Radnici_Konobar">
+    <Key>
+      <PropertyRef Name="Jmbg" />
+    </Key>
+    <Property Name="BrojNaplacenihKupovina" Type="int" Nullable="false" />
+    <Property Name="Jmbg" Type="nvarchar" Nullable="false" MaxLength="13" />
+  </EntityType>
+  <EntityType Name="Proizvodi_Pice">
+    <Key>
+      <PropertyRef Name="Naziv" />
+    </Key>
+    <Property Name="Velicina" Type="nvarchar" Nullable="false" MaxLength="4" />
+    <Property Name="Naziv" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="RestoranRadnik">
+    <Key>
+      <PropertyRef Name="Restorani_Naziv" />
+      <PropertyRef Name="Radnici_Jmbg" />
+    </Key>
+    <Property Name="Restorani_Naziv" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Radnici_Jmbg" Type="nvarchar" Nullable="false" MaxLength="13" />
+  </EntityType>
+  <Association Name="VlasnikRestoran">
+    <End Role="Vlasnik" Type="RestoranDbModel.Store.Vlasnici" Multiplicity="1" />
+    <End Role="Restoran" Type="RestoranDbModel.Store.Restorani" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vlasnik">
+        <PropertyRef Name="Jmbg" />
+      </Principal>
+      <Dependent Role="Restoran">
+        <PropertyRef Name="VlasnikJmbg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RestoranNudi">
+    <End Role="Restoran" Type="RestoranDbModel.Store.Restorani" Multiplicity="1" />
+    <End Role="Nudi" Type="RestoranDbModel.Store.Nudis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restoran">
+        <PropertyRef Name="Naziv" />
+      </Principal>
+      <Dependent Role="Nudi">
+        <PropertyRef Name="RestoranNaziv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NudiProizvod">
+    <End Role="Nudi" Type="RestoranDbModel.Store.Nudis" Multiplicity="*" />
+    <End Role="Proizvod" Type="RestoranDbModel.Store.Proizvodi" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Proizvod">
+        <PropertyRef Name="Naziv" />
+      </Principal>
+      <Dependent Role="Nudi">
+        <PropertyRef Name="ProizvodNaziv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KuvarJelo">
+    <End Role="Kuvar" Type="RestoranDbModel.Store.Radnici_Kuvar" Multiplicity="1" />
+    <End Role="Jelo" Type="RestoranDbModel.Store.Proizvodi_Jelo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kuvar">
+        <PropertyRef Name="Jmbg" />
+      </Principal>
+      <Dependent Role="Jelo">
+        <PropertyRef Name="KuvarJmbg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NudiKupuje">
+    <End Role="Nudi" Type="RestoranDbModel.Store.Nudis" Multiplicity="1" />
+    <End Role="Kupuje" Type="RestoranDbModel.Store.Kupovine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nudi">
+        <PropertyRef Name="RestoranNaziv" />
+        <PropertyRef Name="ProizvodNaziv" />
+      </Principal>
+      <Dependent Role="Kupuje">
+        <PropertyRef Name="NudiRestoranNaziv" />
+        <PropertyRef Name="NudiProizvodNaziv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KupujeKupac">
+    <End Role="Kupuje" Type="RestoranDbModel.Store.Kupovine" Multiplicity="*" />
+    <End Role="Kupac" Type="RestoranDbModel.Store.Kupci" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Kupac">
+        <PropertyRef Name="Jmbg" />
+      </Principal>
+      <Dependent Role="Kupuje">
+        <PropertyRef Name="KupacJmbg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KupujeKonobar">
+    <End Role="Kupuje" Type="RestoranDbModel.Store.Kupovine" Multiplicity="*" />
+    <End Role="Konobar" Type="RestoranDbModel.Store.Radnici_Konobar" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Konobar">
+        <PropertyRef Name="Jmbg" />
+      </Principal>
+      <Dependent Role="Kupuje">
+        <PropertyRef Name="KonobarJmbg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RestoranRadnik_Restoran">
+    <End Role="Restoran" Type="RestoranDbModel.Store.Restorani" Multiplicity="1" />
+    <End Role="RestoranRadnik" Type="RestoranDbModel.Store.RestoranRadnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restoran">
+        <PropertyRef Name="Naziv" />
+      </Principal>
+      <Dependent Role="RestoranRadnik">
+        <PropertyRef Name="Restorani_Naziv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RestoranRadnik_Radnik">
+    <End Role="RestoranRadnik" Type="RestoranDbModel.Store.RestoranRadnik" Multiplicity="*" />
+    <End Role="Radnik" Type="RestoranDbModel.Store.Radnici" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Radnik">
+        <PropertyRef Name="Jmbg" />
+      </Principal>
+      <Dependent Role="RestoranRadnik">
+        <PropertyRef Name="Radnici_Jmbg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kuvar_inherits_Radnik">
+    <End Role="Radnik" Type="RestoranDbModel.Store.Radnici" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Kuvar" Type="RestoranDbModel.Store.Radnici_Kuvar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Radnik">
+        <PropertyRef Name="Jmbg" />
+      </Principal>
+      <Dependent Role="Kuvar">
+        <PropertyRef Name="Jmbg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jelo_inherits_Proizvod">
+    <End Role="Proizvod" Type="RestoranDbModel.Store.Proizvodi" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Jelo" Type="RestoranDbModel.Store.Proizvodi_Jelo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Proizvod">
+        <PropertyRef Name="Naziv" />
+      </Principal>
+      <Dependent Role="Jelo">
+        <PropertyRef Name="Naziv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Konobar_inherits_Radnik">
+    <End Role="Radnik" Type="RestoranDbModel.Store.Radnici" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Konobar" Type="RestoranDbModel.Store.Radnici_Konobar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Radnik">
+        <PropertyRef Name="Jmbg" />
+      </Principal>
+      <Dependent Role="Konobar">
+        <PropertyRef Name="Jmbg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pice_inherits_Proizvod">
+    <End Role="Proizvod" Type="RestoranDbModel.Store.Proizvodi" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Pice" Type="RestoranDbModel.Store.Proizvodi_Pice" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Proizvod">
+        <PropertyRef Name="Naziv" />
+      </Principal>
+      <Dependent Role="Pice">
+        <PropertyRef Name="Naziv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="RestoranDbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="RestoranDbModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Vlasnici" EntityType="RestoranDbModel.Vlasnik" />
+          <EntitySet Name="Restorani" EntityType="RestoranDbModel.Restoran" />
+          <EntitySet Name="Radnici" EntityType="RestoranDbModel.Radnik" />
+          <AssociationSet Name="VlasnikRestoran" Association="RestoranDbModel.VlasnikRestoran">
+            <End Role="Vlasnik" EntitySet="Vlasnici" />
+            <End Role="Restoran" EntitySet="Restorani" />
+          </AssociationSet>
+          <AssociationSet Name="RestoranRadnik" Association="RestoranDbModel.RestoranRadnik">
+            <End Role="Restoran" EntitySet="Restorani" />
+            <End Role="Radnik" EntitySet="Radnici" />
+          </AssociationSet>
+          <EntitySet Name="Kupci" EntityType="RestoranDbModel.Kupac" />
+          <EntitySet Name="Proizvodi" EntityType="RestoranDbModel.Proizvod" />
+          <EntitySet Name="Nudis" EntityType="RestoranDbModel.Nudi" />
+          <AssociationSet Name="RestoranNudi" Association="RestoranDbModel.RestoranNudi">
+            <End Role="Restoran" EntitySet="Restorani" />
+            <End Role="Nudi" EntitySet="Nudis" />
+          </AssociationSet>
+          <AssociationSet Name="NudiProizvod" Association="RestoranDbModel.NudiProizvod">
+            <End Role="Nudi" EntitySet="Nudis" />
+            <End Role="Proizvod" EntitySet="Proizvodi" />
+          </AssociationSet>
+          <AssociationSet Name="KuvarJelo" Association="RestoranDbModel.KuvarJelo">
+            <End Role="Kuvar" EntitySet="Radnici" />
+            <End Role="Jelo" EntitySet="Proizvodi" />
+          </AssociationSet>
+          <EntitySet Name="Kupovine" EntityType="RestoranDbModel.Kupuje" />
+          <AssociationSet Name="NudiKupuje" Association="RestoranDbModel.NudiKupuje">
+            <End Role="Nudi" EntitySet="Nudis" />
+            <End Role="Kupuje" EntitySet="Kupovine" />
+          </AssociationSet>
+          <AssociationSet Name="KupujeKupac" Association="RestoranDbModel.KupujeKupac">
+            <End Role="Kupuje" EntitySet="Kupovine" />
+            <End Role="Kupac" EntitySet="Kupci" />
+          </AssociationSet>
+          <AssociationSet Name="KupujeKonobar" Association="RestoranDbModel.KupujeKonobar">
+            <End Role="Kupuje" EntitySet="Kupovine" />
+            <End Role="Konobar" EntitySet="Radnici" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Vlasnik">
+          <Key>
+            <PropertyRef Name="Jmbg" />
+          </Key>
+          <Property Name="Jmbg" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="13" />
+          <Property Name="Ime" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="Prezime" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="BrojTelefona" Type="String" Nullable="true" MaxLength="10" />
+          <NavigationProperty Name="Restorani" Relationship="RestoranDbModel.VlasnikRestoran" FromRole="Vlasnik" ToRole="Restoran" />
+        </EntityType>
+        <EntityType Name="Restoran">
+          <Key>
+            <PropertyRef Name="Naziv" />
+          </Key>
+          <Property Name="Naziv" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="100" />
+          <Property Name="Adresa" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="Grad" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="BrojTelefona" Type="String" Nullable="false" MaxLength="10" />
+          <NavigationProperty Name="Vlasnik" Relationship="RestoranDbModel.VlasnikRestoran" FromRole="Restoran" ToRole="Vlasnik" />
+          <Property Name="VlasnikJmbg" Type="String" Nullable="false" MaxLength="13" />
+          <NavigationProperty Name="Radnici" Relationship="RestoranDbModel.RestoranRadnik" FromRole="Restoran" ToRole="Radnik" />
+          <NavigationProperty Name="Nudis" Relationship="RestoranDbModel.RestoranNudi" FromRole="Restoran" ToRole="Nudi" />
+        </EntityType>
+        <EntityType Name="Radnik">
+          <Key>
+            <PropertyRef Name="Jmbg" />
+          </Key>
+          <Property Name="Jmbg" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="13" />
+          <Property Name="Ime" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="Prezime" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="BrojTelefona" Type="String" Nullable="false" MaxLength="10" />
+          <NavigationProperty Name="Restorani" Relationship="RestoranDbModel.RestoranRadnik" FromRole="Radnik" ToRole="Restoran" />
+        </EntityType>
+        <Association Name="VlasnikRestoran">
+          <End Type="RestoranDbModel.Vlasnik" Role="Vlasnik" Multiplicity="1" />
+          <End Type="RestoranDbModel.Restoran" Role="Restoran" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vlasnik">
+              <PropertyRef Name="Jmbg" />
+            </Principal>
+            <Dependent Role="Restoran">
+              <PropertyRef Name="VlasnikJmbg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RestoranRadnik">
+          <End Type="RestoranDbModel.Restoran" Role="Restoran" Multiplicity="*" />
+          <End Type="RestoranDbModel.Radnik" Role="Radnik" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Konobar" BaseType="RestoranDbModel.Radnik" >
+          <Property Name="BrojNaplacenihKupovina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kupuovine" Relationship="RestoranDbModel.KupujeKonobar" FromRole="Konobar" ToRole="Kupuje" />
+        </EntityType>
+        <EntityType Name="Kuvar" BaseType="RestoranDbModel.Radnik" >
+          <Property Name="BrojNapravljenihJela" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Jela" Relationship="RestoranDbModel.KuvarJelo" FromRole="Kuvar" ToRole="Jelo" />
+        </EntityType>
+        <EntityType Name="Kupac">
+          <Key>
+            <PropertyRef Name="Jmbg" />
+          </Key>
+          <Property Name="Jmbg" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="13" />
+          <Property Name="Ime" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="Prezime" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="BrojTelefona" Type="String" Nullable="false" MaxLength="10" />
+          <NavigationProperty Name="Kupovine" Relationship="RestoranDbModel.KupujeKupac" FromRole="Kupac" ToRole="Kupuje" />
+        </EntityType>
+        <EntityType Name="Proizvod">
+          <Key>
+            <PropertyRef Name="Naziv" />
+          </Key>
+          <Property Name="Naziv" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="100" />
+          <Property Name="Cena" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Nudis" Relationship="RestoranDbModel.NudiProizvod" FromRole="Proizvod" ToRole="Nudi" />
+        </EntityType>
+        <EntityType Name="Nudi" >
+          <Key>
+            <PropertyRef Name="RestoranNaziv" />
+            <PropertyRef Name="ProizvodNaziv" />
+          </Key>
+          <NavigationProperty Name="Restoran" Relationship="RestoranDbModel.RestoranNudi" FromRole="Nudi" ToRole="Restoran" />
+          <Property Name="RestoranNaziv" Type="String" Nullable="false" MaxLength="100" />
+          <NavigationProperty Name="Proizvod" Relationship="RestoranDbModel.NudiProizvod" FromRole="Nudi" ToRole="Proizvod" />
+          <Property Name="ProizvodNaziv" Type="String" Nullable="false" MaxLength="100" />
+          <NavigationProperty Name="Kupovine" Relationship="RestoranDbModel.NudiKupuje" FromRole="Nudi" ToRole="Kupuje" />
+        </EntityType>
+        <Association Name="RestoranNudi">
+          <End Type="RestoranDbModel.Restoran" Role="Restoran" Multiplicity="1" />
+          <End Type="RestoranDbModel.Nudi" Role="Nudi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restoran">
+              <PropertyRef Name="Naziv" />
+            </Principal>
+            <Dependent Role="Nudi">
+              <PropertyRef Name="RestoranNaziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="NudiProizvod">
+          <End Type="RestoranDbModel.Nudi" Role="Nudi" Multiplicity="*" />
+          <End Type="RestoranDbModel.Proizvod" Role="Proizvod" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod">
+              <PropertyRef Name="Naziv" />
+            </Principal>
+            <Dependent Role="Nudi">
+              <PropertyRef Name="ProizvodNaziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Pice" BaseType="RestoranDbModel.Proizvod" >
+          <Property Name="Velicina" Type="String" Nullable="false" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="Jelo" BaseType="RestoranDbModel.Proizvod" >
+          <Property Name="Sastojci" Type="String" Nullable="false" MaxLength="100" />
+          <NavigationProperty Name="Kuvar" Relationship="RestoranDbModel.KuvarJelo" FromRole="Jelo" ToRole="Kuvar" />
+          <Property Name="KuvarJmbg" Type="String" Nullable="false" MaxLength="13" />
+        </EntityType>
+        <Association Name="KuvarJelo">
+          <End Type="RestoranDbModel.Kuvar" Role="Kuvar" Multiplicity="1" />
+          <End Type="RestoranDbModel.Jelo" Role="Jelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kuvar">
+              <PropertyRef Name="Jmbg" />
+            </Principal>
+            <Dependent Role="Jelo">
+              <PropertyRef Name="KuvarJmbg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Kupuje" >
+          <Key>
+            <PropertyRef Name="NudiRestoranNaziv" />
+            <PropertyRef Name="NudiProizvodNaziv" />
+            <PropertyRef Name="KupacJmbg" />
+            <PropertyRef Name="KonobarJmbg" />
+          </Key>
+          <NavigationProperty Name="Nudi" Relationship="RestoranDbModel.NudiKupuje" FromRole="Kupuje" ToRole="Nudi" />
+          <Property Name="NudiRestoranNaziv" Type="String" Nullable="false" MaxLength="100" />
+          <Property Name="NudiProizvodNaziv" Type="String" Nullable="false" MaxLength="100" />
+          <NavigationProperty Name="Kupac" Relationship="RestoranDbModel.KupujeKupac" FromRole="Kupuje" ToRole="Kupac" />
+          <Property Name="KupacJmbg" Type="String" Nullable="false" MaxLength="13" />
+          <NavigationProperty Name="Konobar" Relationship="RestoranDbModel.KupujeKonobar" FromRole="Kupuje" ToRole="Konobar" />
+          <Property Name="KonobarJmbg" Type="String" Nullable="false" MaxLength="13" />
+        </EntityType>
+        <Association Name="NudiKupuje">
+          <End Type="RestoranDbModel.Nudi" Role="Nudi" Multiplicity="1" />
+          <End Type="RestoranDbModel.Kupuje" Role="Kupuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nudi">
+              <PropertyRef Name="RestoranNaziv" />
+              <PropertyRef Name="ProizvodNaziv" />
+            </Principal>
+            <Dependent Role="Kupuje">
+              <PropertyRef Name="NudiRestoranNaziv" />
+              <PropertyRef Name="NudiProizvodNaziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KupujeKupac">
+          <End Type="RestoranDbModel.Kupuje" Role="Kupuje" Multiplicity="*" />
+          <End Type="RestoranDbModel.Kupac" Role="Kupac" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Kupac">
+              <PropertyRef Name="Jmbg" />
+            </Principal>
+            <Dependent Role="Kupuje">
+              <PropertyRef Name="KupacJmbg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KupujeKonobar">
+          <End Type="RestoranDbModel.Kupuje" Role="Kupuje" Multiplicity="*" />
+          <End Type="RestoranDbModel.Konobar" Role="Konobar" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Konobar">
+              <PropertyRef Name="Jmbg" />
+            </Principal>
+            <Dependent Role="Kupuje">
+              <PropertyRef Name="KonobarJmbg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RestoranDbModelStoreContainer" CdmEntityContainer="RestoranDbModelContainer">
+    <EntitySetMapping Name="Vlasnici">
+      <EntityTypeMapping TypeName="IsTypeOf(RestoranDbModel.Vlasnik)">
+        <MappingFragment StoreEntitySet="Vlasnici">
+          <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="BrojTelefona" ColumnName="BrojTelefona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restorani">
+      <EntityTypeMapping TypeName="IsTypeOf(RestoranDbModel.Restoran)">
+        <MappingFragment StoreEntitySet="Restorani">
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="Grad" ColumnName="Grad" />
+          <ScalarProperty Name="BrojTelefona" ColumnName="BrojTelefona" />
+          <ScalarProperty Name="VlasnikJmbg" ColumnName="VlasnikJmbg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Radnici">
+      <EntityTypeMapping TypeName="IsTypeOf(RestoranDbModel.Radnik)">
+        <MappingFragment StoreEntitySet="Radnici">
+          <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="BrojTelefona" ColumnName="BrojTelefona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(RestoranDbModel.Kuvar)">
+        <MappingFragment StoreEntitySet="Radnici_Kuvar">
+          <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+          <ScalarProperty Name="BrojNapravljenihJela" ColumnName="BrojNapravljenihJela" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(RestoranDbModel.Konobar)">
+        <MappingFragment StoreEntitySet="Radnici_Konobar">
+          <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+          <ScalarProperty Name="BrojNaplacenihKupovina" ColumnName="BrojNaplacenihKupovina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kupci">
+      <EntityTypeMapping TypeName="IsTypeOf(RestoranDbModel.Kupac)">
+        <MappingFragment StoreEntitySet="Kupci">
+          <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="BrojTelefona" ColumnName="BrojTelefona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proizvodi">
+      <EntityTypeMapping TypeName="IsTypeOf(RestoranDbModel.Proizvod)">
+        <MappingFragment StoreEntitySet="Proizvodi">
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(RestoranDbModel.Jelo)">
+        <MappingFragment StoreEntitySet="Proizvodi_Jelo">
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Sastojci" ColumnName="Sastojci" />
+          <ScalarProperty Name="KuvarJmbg" ColumnName="KuvarJmbg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(RestoranDbModel.Pice)">
+        <MappingFragment StoreEntitySet="Proizvodi_Pice">
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Velicina" ColumnName="Velicina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nudis">
+      <EntityTypeMapping TypeName="IsTypeOf(RestoranDbModel.Nudi)">
+        <MappingFragment StoreEntitySet="Nudis">
+          <ScalarProperty Name="RestoranNaziv" ColumnName="RestoranNaziv" />
+          <ScalarProperty Name="ProizvodNaziv" ColumnName="ProizvodNaziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kupovine">
+      <EntityTypeMapping TypeName="IsTypeOf(RestoranDbModel.Kupuje)">
+        <MappingFragment StoreEntitySet="Kupovine">
+          <ScalarProperty Name="NudiRestoranNaziv" ColumnName="NudiRestoranNaziv" />
+          <ScalarProperty Name="NudiProizvodNaziv" ColumnName="NudiProizvodNaziv" />
+          <ScalarProperty Name="KupacJmbg" ColumnName="KupacJmbg" />
+          <ScalarProperty Name="KonobarJmbg" ColumnName="KonobarJmbg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="RestoranRadnik" TypeName="RestoranDbModel.RestoranRadnik" StoreEntitySet="RestoranRadnik">
+      <EndProperty Name="Restoran">
+        <ScalarProperty Name="Naziv" ColumnName="Restorani_Naziv" />
+      </EndProperty>
+      <EndProperty Name="Radnik">
+        <ScalarProperty Name="Jmbg" ColumnName="Radnici_Jmbg" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
