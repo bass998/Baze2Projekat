@@ -17,12 +17,12 @@ namespace ProjectLogic
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Konobar()
         {
-            this.Kupuovine = new HashSet<Kupuje>();
+            this.Kupujes = new HashSet<Kupuje>();
         }
     
         public int BrojNaplacenihKupovina { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kupuje> Kupuovine { get; set; }
+        public virtual ICollection<Kupuje> Kupujes { get; set; }
     }
 }

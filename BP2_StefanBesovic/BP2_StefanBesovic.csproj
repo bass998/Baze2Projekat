@@ -65,6 +65,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\Implementation\KupciCRUD.cs" />
+    <Compile Include="ViewModel\Implementation\RadniciCRUD.cs" />
+    <Compile Include="ViewModel\Implementation\RestoraniCRUD.cs" />
+    <Compile Include="ViewModel\Implementation\VlasniciCRUD.cs" />
+    <Compile Include="ViewModel\Intefaces\IKupciCRUD.cs" />
+    <Compile Include="ViewModel\Intefaces\IRadniciCRUD.cs" />
+    <Compile Include="ViewModel\Intefaces\IRestoraniCRUD.cs" />
+    <Compile Include="ViewModel\Intefaces\IVlasniciCRUD.cs" />
+    <Compile Include="View\Kupci.xaml.cs">
+      <DependentUpon>Kupci.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Radnici.xaml.cs">
+      <DependentUpon>Radnici.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Restorani.xaml.cs">
+      <DependentUpon>Restorani.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Vlasnici.xaml.cs">
+      <DependentUpon>Vlasnici.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -77,6 +97,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Kupci.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Radnici.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Restorani.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Vlasnici.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -111,6 +147,7 @@
       <Name>ProjectLogic</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/31/2021 23:50:10
+-- Date Created: 06/01/2021 12:28:07
 -- Generated from EDMX file: C:\Users\HP\Desktop\baze\ProjectLogic\RestoranDbModel.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,86 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_VlasnikRestoran]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Restorani] DROP CONSTRAINT [FK_VlasnikRestoran];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RestoranRadnik_Restoran]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RestoranRadnik] DROP CONSTRAINT [FK_RestoranRadnik_Restoran];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RestoranRadnik_Radnik]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RestoranRadnik] DROP CONSTRAINT [FK_RestoranRadnik_Radnik];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RestoranNudi]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Nudis] DROP CONSTRAINT [FK_RestoranNudi];
+GO
+IF OBJECT_ID(N'[dbo].[FK_NudiProizvod]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Nudis] DROP CONSTRAINT [FK_NudiProizvod];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KuvarJelo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Proizvodi_Jelo] DROP CONSTRAINT [FK_KuvarJelo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_NudiKupuje]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Kupovine] DROP CONSTRAINT [FK_NudiKupuje];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KupujeKupac]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Kupovine] DROP CONSTRAINT [FK_KupujeKupac];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KupujeKonobar]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Kupovine] DROP CONSTRAINT [FK_KupujeKonobar];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Kuvar_inherits_Radnik]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Radnici_Kuvar] DROP CONSTRAINT [FK_Kuvar_inherits_Radnik];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Jelo_inherits_Proizvod]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Proizvodi_Jelo] DROP CONSTRAINT [FK_Jelo_inherits_Proizvod];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Konobar_inherits_Radnik]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Radnici_Konobar] DROP CONSTRAINT [FK_Konobar_inherits_Radnik];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Pice_inherits_Proizvod]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Proizvodi_Pice] DROP CONSTRAINT [FK_Pice_inherits_Proizvod];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Vlasnici]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Vlasnici];
+GO
+IF OBJECT_ID(N'[dbo].[Restorani]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Restorani];
+GO
+IF OBJECT_ID(N'[dbo].[Radnici]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Radnici];
+GO
+IF OBJECT_ID(N'[dbo].[Kupci]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Kupci];
+GO
+IF OBJECT_ID(N'[dbo].[Proizvodi]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Proizvodi];
+GO
+IF OBJECT_ID(N'[dbo].[Nudis]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Nudis];
+GO
+IF OBJECT_ID(N'[dbo].[Kupovine]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Kupovine];
+GO
+IF OBJECT_ID(N'[dbo].[Radnici_Kuvar]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Radnici_Kuvar];
+GO
+IF OBJECT_ID(N'[dbo].[Proizvodi_Jelo]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Proizvodi_Jelo];
+GO
+IF OBJECT_ID(N'[dbo].[Radnici_Konobar]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Radnici_Konobar];
+GO
+IF OBJECT_ID(N'[dbo].[Proizvodi_Pice]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Proizvodi_Pice];
+GO
+IF OBJECT_ID(N'[dbo].[RestoranRadnik]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[RestoranRadnik];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -163,10 +238,10 @@ ADD CONSTRAINT [PK_Nudis]
     PRIMARY KEY CLUSTERED ([RestoranNaziv], [ProizvodNaziv] ASC);
 GO
 
--- Creating primary key on [NudiRestoranNaziv], [NudiProizvodNaziv], [KupacJmbg], [KonobarJmbg] in table 'Kupovine'
+-- Creating primary key on [NudiRestoranNaziv], [NudiProizvodNaziv], [KupacJmbg] in table 'Kupovine'
 ALTER TABLE [dbo].[Kupovine]
 ADD CONSTRAINT [PK_Kupovine]
-    PRIMARY KEY CLUSTERED ([NudiRestoranNaziv], [NudiProizvodNaziv], [KupacJmbg], [KonobarJmbg] ASC);
+    PRIMARY KEY CLUSTERED ([NudiRestoranNaziv], [NudiProizvodNaziv], [KupacJmbg] ASC);
 GO
 
 -- Creating primary key on [Jmbg] in table 'Radnici_Kuvar'
@@ -307,15 +382,15 @@ GO
 
 -- Creating foreign key on [KonobarJmbg] in table 'Kupovine'
 ALTER TABLE [dbo].[Kupovine]
-ADD CONSTRAINT [FK_KupujeKonobar]
+ADD CONSTRAINT [FK_KonobarKupuje]
     FOREIGN KEY ([KonobarJmbg])
     REFERENCES [dbo].[Radnici_Konobar]
         ([Jmbg])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_KupujeKonobar'
-CREATE INDEX [IX_FK_KupujeKonobar]
+-- Creating non-clustered index for FOREIGN KEY 'FK_KonobarKupuje'
+CREATE INDEX [IX_FK_KonobarKupuje]
 ON [dbo].[Kupovine]
     ([KonobarJmbg]);
 GO

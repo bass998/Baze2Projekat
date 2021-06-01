@@ -4,30 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d92f86fa8f5b4fdf82813667be032b5d" Name="Diagram1" ZoomLevel="92" >
+      <Diagram DiagramId="d92f86fa8f5b4fdf82813667be032b5d" Name="Diagram1" ZoomLevel="60" >
         <EntityTypeShape EntityType="RestoranDbModel.Vlasnik" Width="1.5" PointX="0.5" PointY="0.5" />
         <EntityTypeShape EntityType="RestoranDbModel.Restoran" Width="1.5" PointX="4" PointY="0.5" />
-        <EntityTypeShape EntityType="RestoranDbModel.Radnik" Width="1.5" PointX="7.5" PointY="0.5" />
+        <EntityTypeShape EntityType="RestoranDbModel.Radnik" Width="1.5" PointX="7.5" PointY="0.5" FillColor="255, 128, 0" />
         <AssociationConnector Association="RestoranDbModel.VlasnikRestoran" />
         <AssociationConnector Association="RestoranDbModel.RestoranRadnik" />
-        <EntityTypeShape EntityType="RestoranDbModel.Konobar" Width="1.5" PointX="10.375" PointY="2.75" />
-        <InheritanceConnector EntityType="RestoranDbModel.Konobar" />
-        <EntityTypeShape EntityType="RestoranDbModel.Kuvar" Width="1.5" PointX="11" PointY="0.75" />
+        <EntityTypeShape EntityType="RestoranDbModel.Konobar" Width="1.5" PointX="9.375" PointY="3" FillColor="255, 192, 128" />
+        <InheritanceConnector EntityType="RestoranDbModel.Konobar" ManuallyRouted="false" >
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="RestoranDbModel.Kuvar" Width="1.5" PointX="11" PointY="0.75" FillColor="255, 192, 128" />
         <InheritanceConnector EntityType="RestoranDbModel.Kuvar" />
         <EntityTypeShape EntityType="RestoranDbModel.Kupac" Width="1.5" PointX="9.5" PointY="4.875" />
-        <EntityTypeShape EntityType="RestoranDbModel.Proizvod" Width="1.5" PointX="3.75" PointY="6.375" />
-        <EntityTypeShape EntityType="RestoranDbModel.Nudi" Width="1.5" PointX="3.875" PointY="3.75" />
+        <EntityTypeShape EntityType="RestoranDbModel.Proizvod" Width="1.5" PointX="3.75" PointY="6.375" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="RestoranDbModel.Nudi" Width="1.5" PointX="3.875" PointY="3.75" FillColor="Yellow" />
         <AssociationConnector Association="RestoranDbModel.RestoranNudi" />
         <AssociationConnector Association="RestoranDbModel.NudiProizvod" />
-        <EntityTypeShape EntityType="RestoranDbModel.Pice" Width="1.5" PointX="2" PointY="9.25" />
+        <EntityTypeShape EntityType="RestoranDbModel.Pice" Width="1.5" PointX="2" PointY="9.25" IsExpanded="true" FillColor="255, 192, 128" />
         <InheritanceConnector EntityType="RestoranDbModel.Pice" />
-        <EntityTypeShape EntityType="RestoranDbModel.Jelo" Width="1.5" PointX="5" PointY="9.25" />
+        <EntityTypeShape EntityType="RestoranDbModel.Jelo" Width="1.5" PointX="5" PointY="9.25" FillColor="255, 192, 128" />
         <InheritanceConnector EntityType="RestoranDbModel.Jelo" />
         <AssociationConnector Association="RestoranDbModel.KuvarJelo" />
-        <EntityTypeShape EntityType="RestoranDbModel.Kupuje" Width="1.5" PointX="6.625" PointY="4.25" />
+        <EntityTypeShape EntityType="RestoranDbModel.Kupuje" Width="1.5" PointX="6.625" PointY="4.25" FillColor="Yellow" />
         <AssociationConnector Association="RestoranDbModel.NudiKupuje" />
         <AssociationConnector Association="RestoranDbModel.KupujeKupac" />
-        <AssociationConnector Association="RestoranDbModel.KupujeKonobar" />
+        <AssociationConnector Association="RestoranDbModel.KonobarKupuje" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

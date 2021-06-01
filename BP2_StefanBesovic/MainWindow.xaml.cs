@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProjectLogic;
+using BP2_StefanBesovic.View;
 
 namespace BP2_StefanBesovic
 {
@@ -21,60 +22,27 @@ namespace BP2_StefanBesovic
     /// </summary>
     public partial class MainWindow : Window
     {
-        private RestoranDbModelContainer db;
         public MainWindow()
         {
             InitializeComponent();
-            db = new RestoranDbModelContainer();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void vlasniciBtn_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            Vlasnik w = new Vlasnik();
-            w.Jmbg = "1212121212121";
-            w.Ime = "Milos";
-            w.Prezime = "Milovanovic";
-            w.BrojTelefona = "0661232312";
+            Vlasnici prozor = new Vlasnici();
+            prozor.Show();
+        }
 
-            db.Vlasnici.Add(w);
-            db.SaveChanges();
-            
+        private void restoraniBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Restorani prozor = new Restorani();
+            prozor.Show();
+        }
 
-            Kupac k = new Kupac();
-            k.Jmbg = "1112223331112";
-            k.Ime = "Miran";
-            k.Prezime = "Miric";
-            k.BrojTelefona = "0621232312";
-
-            db.Kupci.Add(k);
-            db.SaveChanges();
-
-
-            Konobar r = new Konobar();
-            r.Jmbg = "2223334445556";
-            r.Ime = "Ziki";
-            r.Prezime = "Miric";
-            r.BrojTelefona = "0692312312";
-            
-            db.Radnici.Add(r);
-            db.SaveChanges();
-
-            Kupuje kp = new Kupuje();
-            kp.NudiRestoranNaziv = "StefansDinner";
-            kp.NudiProizvodNaziv = "Susi";
-            kp.KonobarJmbg = "2223334445556";
-            kp.KupacJmbg = "1112223331112";
-
-            db.Kupovine.Add(kp);
-            db.SaveChanges();
-
-            */
-
-
-            db.Proizvodi.Remove(db.Proizvodi.Find("Fanta1.5"));
-            db.SaveChanges();
-
+        private void kupciBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Kupci prozor = new Kupci();
+            prozor.Show();
         }
     }
 }

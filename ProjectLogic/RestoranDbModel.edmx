@@ -50,9 +50,9 @@
       <End Role="Kupuje" EntitySet="Kupovine" />
       <End Role="Kupac" EntitySet="Kupci" />
     </AssociationSet>
-    <AssociationSet Name="KupujeKonobar" Association="RestoranDbModel.Store.KupujeKonobar">
-      <End Role="Kupuje" EntitySet="Kupovine" />
+    <AssociationSet Name="KonobarKupuje" Association="RestoranDbModel.Store.KonobarKupuje">
       <End Role="Konobar" EntitySet="Radnici_Konobar" />
+      <End Role="Kupuje" EntitySet="Kupovine" />
     </AssociationSet>
     <AssociationSet Name="FK_Kuvar_inherits_Radnik" Association="RestoranDbModel.Store.FK_Kuvar_inherits_Radnik">
       <End Role="Radnik" EntitySet="Radnici" />
@@ -128,7 +128,6 @@
       <PropertyRef Name="NudiRestoranNaziv" />
       <PropertyRef Name="NudiProizvodNaziv" />
       <PropertyRef Name="KupacJmbg" />
-      <PropertyRef Name="KonobarJmbg" />
     </Key>
     <Property Name="NudiRestoranNaziv" Type="nvarchar" Nullable="false" MaxLength="100" />
     <Property Name="NudiProizvodNaziv" Type="nvarchar" Nullable="false" MaxLength="100" />
@@ -246,9 +245,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="KupujeKonobar">
-    <End Role="Kupuje" Type="RestoranDbModel.Store.Kupovine" Multiplicity="*" />
+  <Association Name="KonobarKupuje">
     <End Role="Konobar" Type="RestoranDbModel.Store.Radnici_Konobar" Multiplicity="1" />
+    <End Role="Kupuje" Type="RestoranDbModel.Store.Kupovine" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Konobar">
         <PropertyRef Name="Jmbg" />
@@ -378,9 +377,9 @@
             <End Role="Kupuje" EntitySet="Kupovine" />
             <End Role="Kupac" EntitySet="Kupci" />
           </AssociationSet>
-          <AssociationSet Name="KupujeKonobar" Association="RestoranDbModel.KupujeKonobar">
-            <End Role="Kupuje" EntitySet="Kupovine" />
+          <AssociationSet Name="KonobarKupuje" Association="RestoranDbModel.KonobarKupuje">
             <End Role="Konobar" EntitySet="Radnici" />
+            <End Role="Kupuje" EntitySet="Kupovine" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Vlasnik">
@@ -434,7 +433,7 @@
         </Association>
         <EntityType Name="Konobar" BaseType="RestoranDbModel.Radnik" >
           <Property Name="BrojNaplacenihKupovina" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Kupuovine" Relationship="RestoranDbModel.KupujeKonobar" FromRole="Konobar" ToRole="Kupuje" />
+          <NavigationProperty Name="Kupujes" Relationship="RestoranDbModel.KonobarKupuje" FromRole="Konobar" ToRole="Kupuje" />
         </EntityType>
         <EntityType Name="Kuvar" BaseType="RestoranDbModel.Radnik" >
           <Property Name="BrojNapravljenihJela" Type="Int32" Nullable="false" />
@@ -518,14 +517,13 @@
             <PropertyRef Name="NudiRestoranNaziv" />
             <PropertyRef Name="NudiProizvodNaziv" />
             <PropertyRef Name="KupacJmbg" />
-            <PropertyRef Name="KonobarJmbg" />
           </Key>
           <NavigationProperty Name="Nudi" Relationship="RestoranDbModel.NudiKupuje" FromRole="Kupuje" ToRole="Nudi" />
           <Property Name="NudiRestoranNaziv" Type="String" Nullable="false" MaxLength="100" />
           <Property Name="NudiProizvodNaziv" Type="String" Nullable="false" MaxLength="100" />
           <NavigationProperty Name="Kupac" Relationship="RestoranDbModel.KupujeKupac" FromRole="Kupuje" ToRole="Kupac" />
           <Property Name="KupacJmbg" Type="String" Nullable="false" MaxLength="13" />
-          <NavigationProperty Name="Konobar" Relationship="RestoranDbModel.KupujeKonobar" FromRole="Kupuje" ToRole="Konobar" />
+          <NavigationProperty Name="Konobar" Relationship="RestoranDbModel.KonobarKupuje" FromRole="Kupuje" ToRole="Konobar" />
           <Property Name="KonobarJmbg" Type="String" Nullable="false" MaxLength="13" />
         </EntityType>
         <Association Name="NudiKupuje">
@@ -554,9 +552,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="KupujeKonobar">
-          <End Type="RestoranDbModel.Kupuje" Role="Kupuje" Multiplicity="*" />
+        <Association Name="KonobarKupuje">
           <End Type="RestoranDbModel.Konobar" Role="Konobar" Multiplicity="1" />
+          <End Type="RestoranDbModel.Kupuje" Role="Kupuje" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Konobar">
               <PropertyRef Name="Jmbg" />

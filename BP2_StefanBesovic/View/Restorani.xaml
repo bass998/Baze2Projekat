@@ -1,0 +1,78 @@
+﻿<Window x:Class="BP2_StefanBesovic.View.Restorani"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BP2_StefanBesovic.View"
+        mc:Ignorable="d"
+        Title="Restorani" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="0,0,-15,-40" Height="520" VerticalAlignment="Top">
+            <GroupBox Height="190" Margin="0,0,-0.2,0">
+                <Grid Margin="15,20,16.8,12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition Width="66*"/>
+                        <ColumnDefinition Width="233*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Naziv restorana: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="0" RenderTransformOrigin="0.54,0.853" Width="201"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="NazivTextBox"  Margin="0,0,0,0.2"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+
+                    <Label Content="Adresa: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="1" Margin="0,0,0,2" RenderTransformOrigin="0.54,0.853" Width="201"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="AdresaTextBox"  Margin="0,4.6,0,1.8"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+
+                    <Label Content="Grad: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="2" Margin="0,0,0,2" RenderTransformOrigin="0.54,0.853" Width="201"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="GradTextBox"  Margin="0,3.2,0,2.2"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+
+                    <Label Content="Broj telefona: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="3" Margin="0,3" RenderTransformOrigin="0.54,0.853" Width="201"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="BrojTelefonaTextBox"  Margin="0,3.2,0,2.2"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+
+                    <Label Content="Vlasnik Jmbg: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="4" Margin="0,3" RenderTransformOrigin="0.54,0.853" Width="201"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="VlasnikJmbgTextBox"  Margin="0,3.4,0,0"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+
+                    <Button x:Name="ButtonOdustane" Content="Odustani" Margin="161,31.4,0,-26.2"  Grid.Column="3" HorizontalAlignment="Left" Width="70" RenderTransformOrigin="1.027,2.872" Grid.Row="3" Click="ButtonOdustane_Click" />
+                    <Button x:Name="ButtonSacuvaj" Content="Sacuvaj" Margin="42,31.4,0,-26.2"  Grid.Column="3" HorizontalAlignment="Left" Width="70" RenderTransformOrigin="1.027,2.872" Grid.Row="3" Click="ButtonSacuvaj_Click" />
+                    <Button x:Name="ButtonIzmeni" Content="Izmeni" Margin="161,0,0,5.2"  Grid.Column="3" HorizontalAlignment="Left" Width="70" RenderTransformOrigin="1.027,2.872" Click="ButtonIzmeni_Click" />
+
+                    <DataGrid x:Name="RestoraniList" Background="Azure" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" Margin="-5,77.4,9.8,-264.2" Grid.ColumnSpan="4" Grid.Row="3">
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn x:Name="Naziv" Header="Naziv" Binding="{Binding Naziv}" Width="150"/>
+                            <DataGridTextColumn x:Name="Adresa" Header="Adresa" Binding="{Binding Adresa}" Width="120"/>
+                            <DataGridTextColumn x:Name="Grad" Header="Grad" Binding="{Binding Grad}" Width="120"/>
+                            <DataGridTextColumn x:Name="BrojTelefona" Header="Broj Telefona" Binding="{Binding BrojTelefona}" Width="120"/>
+                            <DataGridTextColumn x:Name="VlasnimJmbg" Header="Vlasnik Jmbg" Binding="{Binding VlasnikJmbg}" Width="120"/>
+
+                            <DataGridTemplateColumn Width="80">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="MENJAJ" x:Name="ButtonMenjaj" Click="ButtonMenjaj_Click" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="80">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="OBRISI" x:Name="ButtonObrisi" Click="ButtonObrisi_Click" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>
