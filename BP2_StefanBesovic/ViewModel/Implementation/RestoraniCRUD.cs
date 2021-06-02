@@ -39,16 +39,13 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
 
             try
             {
-                if (db.Vlasnici.Find(vlasnikJmbg) != null)
-                {
-                    var vl = db.Restorani.Find(naziv);
-                    vl.Adresa = adresa;
-                    vl.Grad = grad;
-                    vl.BrojTelefona = brojTelefona;
-                    vl.VlasnikJmbg = vlasnikJmbg;
+                var vl = db.Restorani.Find(naziv);
+                vl.Adresa = adresa;
+                vl.Grad = grad;
+                vl.BrojTelefona = brojTelefona;
+                vl.VlasnikJmbg = vlasnikJmbg;
 
-                    db.SaveChanges();
-                }
+                db.SaveChanges();
             }
             catch
             {

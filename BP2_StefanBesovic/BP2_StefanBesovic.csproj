@@ -65,16 +65,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\Implementation\JelaCRUD.cs" />
+    <Compile Include="ViewModel\Implementation\KonobariCRUD.cs" />
     <Compile Include="ViewModel\Implementation\KupciCRUD.cs" />
+    <Compile Include="ViewModel\Implementation\KupovineCRUD.cs" />
+    <Compile Include="ViewModel\Implementation\KuvariCRUD.cs" />
+    <Compile Include="ViewModel\Implementation\NudiCRUD.cs" />
+    <Compile Include="ViewModel\Implementation\PicaCRUD.cs" />
+    <Compile Include="ViewModel\Implementation\ProizvodiCRUD.cs" />
     <Compile Include="ViewModel\Implementation\RadniciCRUD.cs" />
     <Compile Include="ViewModel\Implementation\RestoraniCRUD.cs" />
     <Compile Include="ViewModel\Implementation\VlasniciCRUD.cs" />
+    <Compile Include="ViewModel\Intefaces\IJelaCRUD.cs" />
+    <Compile Include="ViewModel\Intefaces\IKonobariCRUD.cs" />
     <Compile Include="ViewModel\Intefaces\IKupciCRUD.cs" />
+    <Compile Include="ViewModel\Intefaces\IKupovineCRUD.cs" />
+    <Compile Include="ViewModel\Intefaces\IKuvariCRUD.cs" />
+    <Compile Include="ViewModel\Intefaces\INudiCRUD.cs" />
+    <Compile Include="ViewModel\Intefaces\IPicaCRUD.cs" />
+    <Compile Include="ViewModel\Intefaces\IProizvodiCRUD.cs" />
     <Compile Include="ViewModel\Intefaces\IRadniciCRUD.cs" />
     <Compile Include="ViewModel\Intefaces\IRestoraniCRUD.cs" />
     <Compile Include="ViewModel\Intefaces\IVlasniciCRUD.cs" />
+    <Compile Include="View\Jela.xaml.cs">
+      <DependentUpon>Jela.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Konobari.xaml.cs">
+      <DependentUpon>Konobari.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Kupci.xaml.cs">
       <DependentUpon>Kupci.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Kupovine.xaml.cs">
+      <DependentUpon>Kupovine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Kuvari.xaml.cs">
+      <DependentUpon>Kuvari.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pica.xaml.cs">
+      <DependentUpon>Pica.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Ponude.xaml.cs">
+      <DependentUpon>Ponude.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Proizvodi.xaml.cs">
+      <DependentUpon>Proizvodi.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Radnici.xaml.cs">
       <DependentUpon>Radnici.xaml</DependentUpon>
@@ -97,7 +132,35 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Jela.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Konobari.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Kupci.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Kupovine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Kuvari.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pica.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Ponude.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Proizvodi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/01/2021 12:28:07
+-- Date Created: 06/01/2021 23:00:50
 -- Generated from EDMX file: C:\Users\HP\Desktop\baze\ProjectLogic\RestoranDbModel.edmx
 -- --------------------------------------------------
 
@@ -41,8 +41,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_KupujeKupac]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Kupovine] DROP CONSTRAINT [FK_KupujeKupac];
 GO
-IF OBJECT_ID(N'[dbo].[FK_KupujeKonobar]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Kupovine] DROP CONSTRAINT [FK_KupujeKonobar];
+IF OBJECT_ID(N'[dbo].[FK_KonobarKupuje]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Kupovine] DROP CONSTRAINT [FK_KonobarKupuje];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Kuvar_inherits_Radnik]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Radnici_Kuvar] DROP CONSTRAINT [FK_Kuvar_inherits_Radnik];
@@ -126,7 +126,8 @@ CREATE TABLE [dbo].[Radnici] (
     [Jmbg] nvarchar(13)  NOT NULL,
     [Ime] nvarchar(50)  NOT NULL,
     [Prezime] nvarchar(50)  NOT NULL,
-    [BrojTelefona] nvarchar(10)  NOT NULL
+    [BrojTelefona] nvarchar(10)  NOT NULL,
+    [TipRadnika] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -142,7 +143,8 @@ GO
 -- Creating table 'Proizvodi'
 CREATE TABLE [dbo].[Proizvodi] (
     [Naziv] nvarchar(100)  NOT NULL,
-    [Cena] int  NOT NULL
+    [Cena] int  NOT NULL,
+    [TipProizvoda] nvarchar(max)  NOT NULL
 );
 GO
 

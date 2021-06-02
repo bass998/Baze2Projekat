@@ -44,5 +44,56 @@ namespace BP2_StefanBesovic
             Kupci prozor = new Kupci();
             prozor.Show();
         }
+
+        private void radniciBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Radnici prozor = new Radnici();
+            prozor.Show();
+        }
+
+        private void konobariBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Konobari prozor = new Konobari();
+            prozor.Show();
+        }
+
+        private void kuvariBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Kuvari prozor = new Kuvari();
+            prozor.Show();
+        }
+
+        private void proizvodiBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Proizvodi prozor = new Proizvodi();
+            prozor.Show();
+        }
+
+        private void picaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Pica prozor = new Pica();
+            prozor.Show();
+
+        }
+
+        private void jelaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Jela prozor = new Jela();
+            prozor.Show();
+
+        }
+
+        private void ponudeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Ponude prozor = new Ponude();
+            prozor.Show();
+
+        }
+
+        private void kupovineBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Kupovine prozor = new Kupovine();
+            prozor.Show();
+        }
     }
 }

@@ -9,14 +9,14 @@
     <Grid>
         <Button x:Name="vlasniciBtn" Content="Vlasnici" HorizontalAlignment="Left" Margin="24,39,0,0" VerticalAlignment="Top" Width="109" Height="48" Click="vlasniciBtn_Click"/>
         <Button x:Name="restoraniBtn" Content="Restorani" HorizontalAlignment="Left" Margin="181,39,0,0" VerticalAlignment="Top" Width="109" Height="48" Click="restoraniBtn_Click"/>
-        <Button x:Name="jelaBtn" Content="Jela" HorizontalAlignment="Left" Margin="181,217,0,0" VerticalAlignment="Top" Width="109" Height="48"/>
-        <Button x:Name="picaBtn" Content="Pica" HorizontalAlignment="Left" Margin="24,217,0,0" VerticalAlignment="Top" Width="109" Height="48"/>
-        <Button x:Name="konobariBtn" Content="Konobari" HorizontalAlignment="Left" Margin="24,125,0,0" VerticalAlignment="Top" Width="109" Height="48"/>
-        <Button x:Name="kuvariBtn" Content="Kuvari" HorizontalAlignment="Left" Margin="181,125,0,0" VerticalAlignment="Top" Width="109" Height="48"/>
-        <Button x:Name="kupovineBtn" Content="Kupovine" HorizontalAlignment="Left" Margin="480,188,0,0" VerticalAlignment="Top" Width="109" Height="48"/>
-        <Button x:Name="ponudeBtn" Content="Ponude" HorizontalAlignment="Left" Margin="480,58,0,0" VerticalAlignment="Top" Width="109" Height="48"/>
+        <Button x:Name="jelaBtn" Content="Jela" HorizontalAlignment="Left" Margin="181,217,0,0" VerticalAlignment="Top" Width="109" Height="48" Click="jelaBtn_Click"/>
+        <Button x:Name="picaBtn" Content="Pica" HorizontalAlignment="Left" Margin="24,217,0,0" VerticalAlignment="Top" Width="109" Height="48" Click="picaBtn_Click"/>
+        <Button x:Name="konobariBtn" Content="Konobari" HorizontalAlignment="Left" Margin="24,125,0,0" VerticalAlignment="Top" Width="109" Height="48" Click="konobariBtn_Click"/>
+        <Button x:Name="kuvariBtn" Content="Kuvari" HorizontalAlignment="Left" Margin="181,125,0,0" VerticalAlignment="Top" Width="109" Height="48" Click="kuvariBtn_Click"/>
+        <Button x:Name="kupovineBtn" Content="Kupovine" HorizontalAlignment="Left" Margin="480,188,0,0" VerticalAlignment="Top" Width="109" Height="48" Click="kupovineBtn_Click"/>
+        <Button x:Name="ponudeBtn" Content="Ponude" HorizontalAlignment="Left" Margin="480,58,0,0" VerticalAlignment="Top" Width="109" Height="48" Click="ponudeBtn_Click"/>
         <Button x:Name="kupciBtn" Content="Kupci" HorizontalAlignment="Left" Margin="332,39,0,0" VerticalAlignment="Top" Width="109" Height="48" Click="kupciBtn_Click"/>
-        <Button x:Name="proizvodiBtn" Content="Proizvodi" HorizontalAlignment="Left" Margin="332,217,0,0" VerticalAlignment="Top" Width="109" Height="48"/>
-        <Button x:Name="radniciBtn" Content="Radnici" HorizontalAlignment="Left" Margin="332,125,0,0" VerticalAlignment="Top" Width="109" Height="48"/>
+        <Button x:Name="proizvodiBtn" Content="Proizvodi" HorizontalAlignment="Left" Margin="332,217,0,0" VerticalAlignment="Top" Width="109" Height="48" Click="proizvodiBtn_Click"/>
+        <Button x:Name="radniciBtn" Content="Radnici" HorizontalAlignment="Left" Margin="332,125,0,0" VerticalAlignment="Top" Width="109" Height="48" Click="radniciBtn_Click"/>
     </Grid>
 </Window>

@@ -98,6 +98,7 @@
     <Property Name="Ime" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Prezime" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="BrojTelefona" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="TipRadnika" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Kupci">
     <Key>
@@ -114,6 +115,7 @@
     </Key>
     <Property Name="Naziv" Type="nvarchar" Nullable="false" MaxLength="100" />
     <Property Name="Cena" Type="int" Nullable="false" />
+    <Property Name="TipProizvoda" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Nudis">
     <Key>
@@ -414,6 +416,7 @@
           <Property Name="Prezime" Type="String" Nullable="false" MaxLength="50" />
           <Property Name="BrojTelefona" Type="String" Nullable="false" MaxLength="10" />
           <NavigationProperty Name="Restorani" Relationship="RestoranDbModel.RestoranRadnik" FromRole="Radnik" ToRole="Restoran" />
+          <Property Name="TipRadnika" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="VlasnikRestoran">
           <End Type="RestoranDbModel.Vlasnik" Role="Vlasnik" Multiplicity="1" />
@@ -456,6 +459,7 @@
           <Property Name="Naziv" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="100" />
           <Property Name="Cena" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Nudis" Relationship="RestoranDbModel.NudiProizvod" FromRole="Proizvod" ToRole="Nudi" />
+          <Property Name="TipProizvoda" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Nudi" >
           <Key>
@@ -598,6 +602,7 @@
           <ScalarProperty Name="Ime" ColumnName="Ime" />
           <ScalarProperty Name="Prezime" ColumnName="Prezime" />
           <ScalarProperty Name="BrojTelefona" ColumnName="BrojTelefona" />
+          <ScalarProperty Name="TipRadnika" ColumnName="TipRadnika" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(RestoranDbModel.Kuvar)">
@@ -628,6 +633,7 @@
         <MappingFragment StoreEntitySet="Proizvodi">
           <ScalarProperty Name="Naziv" ColumnName="Naziv" />
           <ScalarProperty Name="Cena" ColumnName="Cena" />
+          <ScalarProperty Name="TipProizvoda" ColumnName="TipProizvoda" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(RestoranDbModel.Jelo)">

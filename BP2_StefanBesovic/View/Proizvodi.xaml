@@ -1,11 +1,11 @@
-﻿<Window x:Class="BP2_StefanBesovic.View.Radnici"
+﻿<Window x:Class="BP2_StefanBesovic.View.Proizvodi"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BP2_StefanBesovic.View"
         mc:Ignorable="d"
-        Title="Radnici" Height="450" Width="800">
+        Title="Proizvodi" Height="450" Width="800">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="0,0,-15,-40" Height="520" VerticalAlignment="Top">
             <GroupBox Height="188" Margin="0,0,-0.2,0">
@@ -25,34 +25,31 @@
                         <ColumnDefinition Width="233*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Content="Jmbg radnika: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="0" RenderTransformOrigin="0.54,0.853" Width="201"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="JmbgTextBox"  Margin="0,0,0,0.2"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+                    <Label Content="Naziv: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="0" RenderTransformOrigin="0.54,0.853" Width="201"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="NazivTextBox"  Margin="0,0,0,0.2"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
 
-                    <Label Content="Ime: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="1" Margin="0,0,0,2" RenderTransformOrigin="0.54,0.853" Width="201"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="ImeTextBox"  Margin="0,4.6,0,1.8"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+                    <Label Content="Cena: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="1" Margin="0,0,0,2" RenderTransformOrigin="0.54,0.853" Width="201"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="CenaTextBox"  Margin="0,4.6,0,1.8"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
 
-                    <Label Content="Prezime: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="2" Margin="0,0,0,2" RenderTransformOrigin="0.54,0.853" Width="201"/>
-                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="PrezimeTextBox"  Margin="0,3.2,0,2.2"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+                    <Label Content="Tip Proizvoda: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="2" Margin="0,0,0,2" RenderTransformOrigin="0.54,0.853" Width="201"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="TipProizvodaTextBox"  Margin="0,3.2,0,2.2"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
 
-                    <Label Content="Broj telefona: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="3" Margin="0,3" RenderTransformOrigin="0.54,0.853" Width="201"/>
-                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="BrojTelefonaTextBox"  Margin="0,3.2,0,2.2"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+                    <Label Content="Dodatno: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="3" Margin="0,3" RenderTransformOrigin="0.54,0.853" Width="201"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="DodatnoTextBox"  Margin="0,3.2,0,2.2"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
 
-                    <Label Content="Uloga: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="4" Margin="0,3" RenderTransformOrigin="0.54,0.853" Width="201"/>
-                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="UlogaTextBox"  Margin="0,3.2,0,2.2"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
-
+                    <Label Content="KuvarJmbg: " HorizontalAlignment="Left"  VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="4" Margin="0,3" RenderTransformOrigin="0.54,0.853" Width="201"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="KuvarJmbgTextBox"  Margin="0,3.2,0,2.2"  Width="269" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
 
                     <Button x:Name="ButtonOdustane" Content="Odustani" Margin="161,31.4,0,-26.2"  Grid.Column="3" HorizontalAlignment="Left" Width="70" RenderTransformOrigin="1.027,2.872" Grid.Row="3" Click="ButtonOdustane_Click" />
                     <Button x:Name="ButtonSacuvaj" Content="Sacuvaj" Margin="42,31.4,0,-26.2"  Grid.Column="3" HorizontalAlignment="Left" Width="70" RenderTransformOrigin="1.027,2.872" Grid.Row="3" Click="ButtonSacuvaj_Click" />
                     <Button x:Name="ButtonIzmeni" Content="Izmeni" Margin="161,0,0,5.2"  Grid.Column="3" HorizontalAlignment="Left" Width="70" RenderTransformOrigin="1.027,2.872" Click="ButtonIzmeni_Click" />
 
-                    <DataGrid x:Name="RadniciList" Background="Azure" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" Margin="-5,77.4,9.8,-264.2" Grid.ColumnSpan="4" Grid.Row="3">
+                    <DataGrid x:Name="ProizvodiList" Background="Azure" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" Margin="-5,77.4,9.8,-264.2" Grid.ColumnSpan="4" Grid.Row="3">
                         <DataGrid.Columns>
 
-                            <DataGridTextColumn x:Name="Jmbg" Header="Jmbg" Binding="{Binding Jmbg}" Width="120"/>
-                            <DataGridTextColumn x:Name="Ime" Header="Ime" Binding="{Binding Ime}" Width="120"/>
-                            <DataGridTextColumn x:Name="Prezime" Header="Prezime" Binding="{Binding Prezime}" Width="120"/>
-                            <DataGridTextColumn x:Name="BrojTelefona" Header="BrojTelefona" Binding="{Binding BrojTelefona}" Width="100"/>
-                            <DataGridTextColumn x:Name="TipRadnika" Header="Tip radnika" Binding="{Binding TipRadnika}" Width="100"/>
+                            <DataGridTextColumn x:Name="Naziv" Header="Naziv" Binding="{Binding Naziv}" Width="120"/>
+                            <DataGridTextColumn x:Name="Cena" Header="Cena" Binding="{Binding Cena}" Width="120"/>
+                            <DataGridTextColumn x:Name="TipProizvoda" Header="TipProizvoda" Binding="{Binding TipProizvoda}" Width="120"/>
 
                             <DataGridTemplateColumn Width="80">
                                 <DataGridTemplateColumn.CellTemplate>

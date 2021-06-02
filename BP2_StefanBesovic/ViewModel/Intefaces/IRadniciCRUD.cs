@@ -11,7 +11,7 @@ namespace BP2_StefanBesovic.ViewModel.Intefaces
     {
         void DodajRadnika(string jmbg, string ime, string prezime, string brojTelefona, string uloga);
         void ObrisiRadnika(string jmbg);
-        void IzmeniRadnika(string jmbg, string ime, string prezime, string brojTelefona);
+        void IzmeniRadnika(string jmbg, string ime, string prezime, string brojTelefona, string uloga);
         List<Radnik> UcitajSveRadnike();
     }
 }

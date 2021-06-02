@@ -24,6 +24,7 @@ namespace ProjectLogic
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string BrojTelefona { get; set; }
+        public string TipRadnika { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Restoran> Restorani { get; set; }

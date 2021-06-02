@@ -19,34 +19,34 @@ using System.Windows.Shapes;
 namespace BP2_StefanBesovic.View
 {
     /// <summary>
-    /// Interaction logic for Radnici.xaml
+    /// Interaction logic for Konobari.xaml
     /// </summary>
-    public partial class Radnici : Window
+    public partial class Konobari : Window
     {
-        private IRadniciCRUD factory;
-        public BindingList<Radnik> radnici { get; set; }
+        private IKonobariCRUD factory;
+        public BindingList<Radnik> konobari { get; set; }
 
-        public Radnici()
+        public Konobari()
         {
-            factory = new RadniciCRUD();
+            factory = new KonobariCRUD();
             InitializeComponent();
-            UcitajSveRadnike();
+            UcitajSveKonobare();
         }
 
 
-        private void UcitajSveRadnike()
+        private void UcitajSveKonobare()
         {
-            radnici = new BindingList<Radnik>(factory.UcitajSveRadnike());
-            RadniciList.ItemsSource = radnici;
+            konobari = new BindingList<Radnik>(factory.UcitajSveKonobare());
+            KonobariList.ItemsSource = konobari;
         }
 
         private void ButtonObrisi_Click(object sender, RoutedEventArgs e)
         {
-            var vl = ((FrameworkElement)sender).DataContext as Radnik;
+            var vl = ((FrameworkElement)sender).DataContext as Konobar;
             if (vl != null)
             {
-                factory.ObrisiRadnika(vl.Jmbg);
-                UcitajSveRadnike();
+                factory.ObrisiKonobara(vl.Jmbg);
+                UcitajSveKonobare();
             }
         }
 
@@ -54,52 +54,50 @@ namespace BP2_StefanBesovic.View
         {
             try
             {
-                if (JmbgTextBox.Text != "" && ImeTextBox.Text != "" && PrezimeTextBox.Text != "" && BrojTelefonaTextBox.Text != "" && UlogaTextBox.Text != "")
-                    factory.DodajRadnika(JmbgTextBox.Text, ImeTextBox.Text, PrezimeTextBox.Text, BrojTelefonaTextBox.Text, UlogaTextBox.Text);
+                if (JmbgTextBox.Text != "" && ImeTextBox.Text != "" && PrezimeTextBox.Text != "" && BrojTelefonaTextBox.Text != "")// && UlogaTextBox.Text != "")
+                    factory.DodajKonobara(JmbgTextBox.Text, ImeTextBox.Text, PrezimeTextBox.Text, BrojTelefonaTextBox.Text);
             }
             catch
             {
                 MessageBox.Show("Greska!", "Popunite sva polja!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            UcitajSveRadnike();
+            UcitajSveKonobare();
         }
 
         private void ButtonMenjaj_Click(object sender, RoutedEventArgs e)
         {
-            var vl = ((FrameworkElement)sender).DataContext as Radnik;
+            var vl = ((FrameworkElement)sender).DataContext as Konobar;
             if (vl != null)
             {
                 JmbgTextBox.Text = vl.Jmbg;
                 ImeTextBox.Text = vl.Ime;
                 PrezimeTextBox.Text = vl.Prezime;
                 BrojTelefonaTextBox.Text = vl.BrojTelefona;
-                UlogaTextBox.Text = vl.TipRadnika;
+                //UlogaTextBox.Text = vl.TipRadnika;
 
                 JmbgTextBox.IsReadOnly = true;
-                UlogaTextBox.IsReadOnly = true;
-
+              //UlogaTextBox.IsReadOnly = true;
             }
         }
 
         private void ButtonIzmeni_Click(object sender, RoutedEventArgs e)
         {
-            factory.IzmeniRadnika(JmbgTextBox.Text, ImeTextBox.Text, PrezimeTextBox.Text, BrojTelefonaTextBox.Text, UlogaTextBox.Text);
+            factory.IzmeniKonobara(JmbgTextBox.Text, ImeTextBox.Text, PrezimeTextBox.Text, BrojTelefonaTextBox.Text);
             ResetFields();
-            UcitajSveRadnike();
+            UcitajSveKonobare();
         }
 
         void ResetFields()
         {
-
             JmbgTextBox.Text = "";
             ImeTextBox.Text = "";
             PrezimeTextBox.Text = "";
             BrojTelefonaTextBox.Text = "";
-            UlogaTextBox.Text = "";
+           // UlogaTextBox.Text = "Konobar";
 
             JmbgTextBox.IsReadOnly = false;
-            UlogaTextBox.IsReadOnly = false;
+//UlogaTextBox.IsReadOnly = false;
         }
 
         private void ButtonOdustane_Click(object sender, RoutedEventArgs e)

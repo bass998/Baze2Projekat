@@ -22,6 +22,7 @@ namespace ProjectLogic
     
         public string Naziv { get; set; }
         public int Cena { get; set; }
+        public string TipProizvoda { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Nudi> Nudis { get; set; }
