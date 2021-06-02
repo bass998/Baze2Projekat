@@ -104,5 +104,18 @@ namespace BP2_StefanBesovic.View
         {
             this.Close();
         }
+        /*
+        private void ButtonIzracunaj_Click(object sender, RoutedEventArgs e)
+        {
+            if (JmbgTextBox.Text == "")
+            {
+                MessageBox.Show("Izaberi Konobara!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                factory.UkupnoNaplaceno(JmbgTextBox.Text);
+            }
+        }
+        */
     }
 }

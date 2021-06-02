@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BP2_StefanBesovic.ViewModel.Implementation
 {
@@ -13,40 +14,48 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
         private RestoranDbModelContainer db = new RestoranDbModelContainer();
         public void DodajProizvod(string naziv, int cena, string tip, string dodatno, string kuvarJmbg)
         {
-            if (tip == "Pice")
+            try
             {
-                Pice v = new Pice()
+                if (tip == "Pice")
                 {
-                    Naziv = naziv,
-                    Cena = cena,
-                    TipProizvoda = tip,
-                    Velicina = dodatno
-                };
+                    Pice v = new Pice()
+                    {
+                        Naziv = naziv,
+                        Cena = cena,
+                        TipProizvoda = tip,
+                        Velicina = dodatno
+                    };
 
-                db.Proizvodi.Add(v);
+                    db.Proizvodi.Add(v);
 
-            }
-            else if (tip == "Jelo")
-            {
-                Jelo v = new Jelo()
-                {
-                    Naziv = naziv,
-                    Cena = cena,
-                    TipProizvoda = tip,
-                    Sastojci = dodatno,
-                    KuvarJmbg = kuvarJmbg
-                };
-
-                db.Proizvodi.Add(v);
-
-                var d = db.Radnici.Find(kuvarJmbg);
-                if(d.TipRadnika == "Kuvar")
-                {
-                    ((Kuvar)d).BrojNapravljenihJela++;
                 }
-            }
+                else if (tip == "Jelo")
+                {
+                    Jelo v = new Jelo()
+                    {
+                        Naziv = naziv,
+                        Cena = cena,
+                        TipProizvoda = tip,
+                        Sastojci = dodatno,
+                        KuvarJmbg = kuvarJmbg
+                    };
 
-            db.SaveChanges();
+                    db.Proizvodi.Add(v);
+
+                    var d = db.Radnici.Find(kuvarJmbg);
+                    if (d.TipRadnika == "Kuvar")
+                    {
+                        ((Kuvar)d).BrojNapravljenihJela++;
+                    }
+                }
+
+                db.SaveChanges();
+
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.InnerException.InnerException.Message, "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void IzmeniProizvod(string naziv, int cena, string dodatno)
@@ -69,7 +78,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne moze se izmeniti proizvod !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -106,7 +115,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne moze se obrisati proizvod !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             db.SaveChanges();
@@ -122,7 +131,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne mogu se ucitati proizvodi!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return proizvodi;

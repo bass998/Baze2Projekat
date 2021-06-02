@@ -11,6 +11,7 @@ namespace BP2_StefanBesovic.ViewModel.Intefaces
     {
         void DodajKupovinu(string nazivRestorana, string nazivProizvoda, string kupacJmbg, string konobarJmbg);
         void ObrisiKupovinu(string nazivRestorana, string nazivProizvoda, string kupacJmbg, string konobarJmbg);
+        void ImeVlasnika(string kupacJmbg, string nazivRestorana);
         List<Kupuje> UcitajKupovine();
     }
 }

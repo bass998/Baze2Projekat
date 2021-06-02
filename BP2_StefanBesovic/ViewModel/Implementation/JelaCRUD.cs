@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BP2_StefanBesovic.ViewModel.Implementation
 {
@@ -14,61 +15,82 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
 
         public void DodajJelo(string naziv, int cena, string sastojci, string kuvarJmbg)
         {
-            Jelo v = new Jelo()
+            try
             {
-                Naziv = naziv,
-                Cena = cena,
-                TipProizvoda = "Jelo",
-                Sastojci = sastojci,
-                KuvarJmbg = kuvarJmbg
-            };
+                Jelo v = new Jelo()
+                {
+                    Naziv = naziv,
+                    Cena = cena,
+                    TipProizvoda = "Jelo",
+                    Sastojci = sastojci,
+                    KuvarJmbg = kuvarJmbg
+                };
 
-            db.Proizvodi.Add(v);
+                db.Proizvodi.Add(v);
 
-            var d = db.Radnici.Find(kuvarJmbg);
-            if (d.TipRadnika == "Kuvar")
-            {
-                ((Kuvar)d).BrojNapravljenihJela++;
+                var d = db.Radnici.Find(kuvarJmbg);
+                if (d.TipRadnika == "Kuvar")
+                {
+                    ((Kuvar)d).BrojNapravljenihJela++;
+                }
+
+                db.SaveChanges();
             }
-
-            db.SaveChanges();
+            catch
+            {
+                MessageBox.Show("Ne moze se dodati jelo !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void IzmeniJelo(string naziv, int cena, string sastojci)
         {
-            Jelo vl = (Jelo)db.Proizvodi.Find(naziv);
-            vl.Cena = cena;
-            vl.Sastojci = sastojci;
+            try
+            {
+                Jelo vl = (Jelo)db.Proizvodi.Find(naziv);
+                vl.Cena = cena;
+                vl.Sastojci = sastojci;
 
 
-            db.SaveChanges();
+                db.SaveChanges();
+            }
+            catch
+            {
+                MessageBox.Show("Ne moze se izmeniti jelo!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void ObrisiJelo(string naziv)
         {
-            Proizvod v = db.Proizvodi.Find(naziv);
-            if (v != null)
+            try
             {
-                List<Nudi> ponude = db.Nudis.ToList();
-
-                foreach (Nudi n in ponude)
+                Proizvod v = db.Proizvodi.Find(naziv);
+                if (v != null)
                 {
-                    if (n.ProizvodNaziv == v.Naziv)
+                    List<Nudi> ponude = db.Nudis.ToList();
+
+                    foreach (Nudi n in ponude)
                     {
-                        db.Nudis.Remove(n);
+                        if (n.ProizvodNaziv == v.Naziv)
+                        {
+                            db.Nudis.Remove(n);
+                        }
                     }
+
+                    var d = db.Radnici.Find(((Jelo)v).KuvarJmbg);
+                    if (d.TipRadnika == "Kuvar")
+                    {
+                        ((Kuvar)d).BrojNapravljenihJela--;
+                    }
+
+
+                    db.Proizvodi.Remove(v);
                 }
-
-                var d = db.Radnici.Find(((Jelo)v).KuvarJmbg);
-                if (d.TipRadnika == "Kuvar")
-                {
-                    ((Kuvar)d).BrojNapravljenihJela--;
-                }
-
-
-                db.Proizvodi.Remove(v);
+                db.SaveChanges();
             }
-            db.SaveChanges();
+            catch
+            {
+                MessageBox.Show("Ne moze se obrisati jelo !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public List<Proizvod> UcitajSvaJela()
@@ -81,7 +103,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne mogu se ucitati jela!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return jela;

@@ -2,9 +2,12 @@
 using ProjectLogic;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BP2_StefanBesovic.ViewModel.Implementation
 {
@@ -37,9 +40,9 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
                 }
 
             }
-            catch
+            catch(Exception e)
             {
-
+                MessageBox.Show("Ne moze se dodati kupovina !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -58,24 +61,63 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne moze se obrisati kupovina !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         public List<Kupuje> UcitajKupovine()
         {
-            List<Kupuje> kupovine = new List<Kupuje>();
+           List<Kupuje> kupovine = new List<Kupuje>();
 
-            try
-            {
-                kupovine = db.Kupovine.ToList();
-            }
-            catch
-            {
+           try
+           {
+               kupovine = db.Kupovine.ToList();
+           }
+           catch
+           {
+               MessageBox.Show("Ne mogu se ucitati kupovine!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+           }
 
-            }
-
-            return kupovine;
+           return kupovine;
         }
+
+        public void ImeVlasnika(string kupacJmbg, string nazivRestorana)
+        {
+            var conString = ConfigurationManager.ConnectionStrings["RestoranDbModelContainer"].ConnectionString;
+            if (conString.ToLower().StartsWith("metadata="))
+            {
+                System.Data.Entity.Core.EntityClient.EntityConnectionStringBuilder efBuilder = new System.Data.Entity.Core.EntityClient.EntityConnectionStringBuilder(conString);
+                conString = efBuilder.ProviderConnectionString;
+            }
+
+            string imeVlasnika = "";
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlCommand com = new SqlCommand("ProcedureImeVlasnika", con))
+                {
+                    com.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    com.Parameters.Add("@KupacJmbg", System.Data.SqlDbType.VarChar, 13).Value = kupacJmbg;
+                    com.Parameters.Add("@NazivRestorana", System.Data.SqlDbType.VarChar, 50).Value = nazivRestorana;
+                    com.Parameters.Add("@ImeVlasnikaRestorana", System.Data.SqlDbType.VarChar, 50);
+                    com.Parameters["@ImeVlasnikaRestorana"].Direction = System.Data.ParameterDirection.Output;
+
+                    try
+                    {
+                        con.Open();
+                        com.ExecuteNonQuery();
+                        imeVlasnika = (String)com.Parameters["@ImeVlasnikaRestorana"].Value;
+                        MessageBox.Show(String.Format("Vlasnik restorana {0} je {1}.", nazivRestorana, imeVlasnika), "Uspesno", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Neka greska se desila", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+                }
+            }
+        }
+
+
     }
 }

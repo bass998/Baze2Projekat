@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BP2_StefanBesovic.ViewModel.Implementation
 {
@@ -13,18 +14,25 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
         private RestoranDbModelContainer db = new RestoranDbModelContainer();
         public void DodajKuvara(string jmbg, string ime, string prezime, string brojTelefona)
         {
-            Kuvar v = new Kuvar()
+            try
             {
-                Jmbg = jmbg,
-                Ime = ime,
-                Prezime = prezime,
-                BrojTelefona = brojTelefona,
-                TipRadnika = "Kuvar",
-                BrojNapravljenihJela = 0
-            };
+                Kuvar v = new Kuvar()
+                {
+                    Jmbg = jmbg,
+                    Ime = ime,
+                    Prezime = prezime,
+                    BrojTelefona = brojTelefona,
+                    TipRadnika = "Kuvar",
+                    BrojNapravljenihJela = 0
+                };
 
-            db.Radnici.Add(v);
-            db.SaveChanges();
+                db.Radnici.Add(v);
+                db.SaveChanges();
+            }
+            catch
+            {
+                MessageBox.Show("Ne moze se dodati kuvar !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void IzmeniKuvara(string jmbg, string ime, string prezime, string brojTelefona)
@@ -42,7 +50,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne moze se izmeniti kuvar !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -70,7 +78,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne moze se obrisati kuvar !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             db.SaveChanges();
@@ -86,7 +94,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne mogu se ucitati kuvari!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return kuvari;

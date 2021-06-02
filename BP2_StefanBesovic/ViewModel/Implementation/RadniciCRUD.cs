@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BP2_StefanBesovic.ViewModel.Implementation
 {
@@ -14,36 +15,43 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
 
         public void DodajRadnika(string jmbg, string ime, string prezime, string brojTelefona, string uloga)
         {
-            if(uloga == "Konobar")
+            try
             {
-                Konobar v = new Konobar()
+                if (uloga == "Konobar")
                 {
-                    Jmbg = jmbg,
-                    Ime = ime,
-                    Prezime = prezime,
-                    BrojTelefona = brojTelefona,
-                    TipRadnika = "Konobar",
-                    BrojNaplacenihKupovina = 0
-                };
+                    Konobar v = new Konobar()
+                    {
+                        Jmbg = jmbg,
+                        Ime = ime,
+                        Prezime = prezime,
+                        BrojTelefona = brojTelefona,
+                        TipRadnika = "Konobar",
+                        BrojNaplacenihKupovina = 0
+                    };
 
-                db.Radnici.Add(v);
+                    db.Radnici.Add(v);
 
+                }
+                else if (uloga == "Kuvar")
+                {
+                    Kuvar v = new Kuvar()
+                    {
+                        Jmbg = jmbg,
+                        Ime = ime,
+                        Prezime = prezime,
+                        BrojTelefona = brojTelefona,
+                        TipRadnika = "Kuvar",
+                        BrojNapravljenihJela = 0
+                    };
+                    db.Radnici.Add(v);
+                }
+
+                db.SaveChanges();
             }
-            else if(uloga == "Kuvar")
+            catch (Exception e)
             {
-                Kuvar v = new Kuvar()
-                {
-                    Jmbg = jmbg,
-                    Ime = ime,
-                    Prezime = prezime,
-                    BrojTelefona = brojTelefona,
-                    TipRadnika = "Kuvar",
-                    BrojNapravljenihJela = 0
-                };
-                db.Radnici.Add(v);
+                MessageBox.Show(e.InnerException.InnerException.Message, "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            db.SaveChanges();
         }
 
         public void IzmeniRadnika(string jmbg, string ime, string prezime, string brojTelefona, string uloga)
@@ -61,7 +69,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne moze se izmeniti radnik !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -103,7 +111,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne moze se obrisati radnik !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             db.SaveChanges();
@@ -119,7 +127,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne mogu se ucitati radnici!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return radnici;

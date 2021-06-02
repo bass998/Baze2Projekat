@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BP2_StefanBesovic.ViewModel.Implementation
 {
@@ -14,19 +15,23 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
 
         public void DodajPice(string naziv, int cena, string velicina)
         {
-
-            Pice v = new Pice()
+            try
             {
-                Naziv = naziv,
-                Cena = cena,
-                TipProizvoda = "Pice",
-                Velicina = velicina
-            };
+                Pice v = new Pice()
+                {
+                    Naziv = naziv,
+                    Cena = cena,
+                    TipProizvoda = "Pice",
+                    Velicina = velicina
+                };
 
-            db.Proizvodi.Add(v);
-
-
-            db.SaveChanges();
+                db.Proizvodi.Add(v);
+                db.SaveChanges();
+            }
+            catch
+            {
+                MessageBox.Show("Ne moze se dodati pice!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void IzmeniPice(string naziv, int cena, string velicina)
@@ -42,7 +47,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne moze se izmeniti pice!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -69,7 +74,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne moze se obrisati pice!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             db.SaveChanges();
@@ -85,7 +90,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne mogu se dodati pica!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return pica;

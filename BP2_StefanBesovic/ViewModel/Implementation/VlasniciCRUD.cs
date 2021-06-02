@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectLogic;
+using System.Windows;
 
 namespace BP2_StefanBesovic.ViewModel.Implementation
 {
@@ -12,17 +13,23 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
     {
         private RestoranDbModelContainer db = new RestoranDbModelContainer();
         public void DodajVlasnika(string jmbg, string ime, string prezime, string brojTelefona)
-        {
-            Vlasnik v = new Vlasnik()
-            {
-                Jmbg = jmbg,
-                Ime = ime,
-                Prezime = prezime,
-                BrojTelefona = brojTelefona
-            };
+        {   
+            try{
+                Vlasnik v = new Vlasnik()
+                {
+                    Jmbg = jmbg,
+                    Ime = ime,
+                    Prezime = prezime,
+                    BrojTelefona = brojTelefona
+                };
 
-            db.Vlasnici.Add(v);
-            db.SaveChanges();
+                 db.Vlasnici.Add(v);
+                db.SaveChanges();
+            }
+            catch
+            {
+                MessageBox.Show("Ne moze se dodati vlasnik !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void IzmeniVlasnika(string jmbg, string ime, string prezime, string brojTelefona)
@@ -39,7 +46,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne moze se izmeniti vlasnik !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -90,7 +97,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne moze se obrisati vlasnik !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             db.SaveChanges();
@@ -106,7 +113,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne mogu se ucitati vlasnici !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return vlasnici;

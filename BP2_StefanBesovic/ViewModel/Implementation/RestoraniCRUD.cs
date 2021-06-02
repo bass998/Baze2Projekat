@@ -30,7 +30,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             else
             {
-
+                MessageBox.Show("Ne moze se dodati restoran !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -49,7 +49,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne moze se izmeniti restoran !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -85,7 +85,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne moze se obrisati restoran !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             db.SaveChanges();
@@ -101,7 +101,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne mogu se ucitati restorani !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return restorani;

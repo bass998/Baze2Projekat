@@ -12,6 +12,7 @@ namespace BP2_StefanBesovic.ViewModel.Intefaces
         void DodajKonobara(string jmbg, string ime, string prezime, string brojTelefona);
         void ObrisiKonobara(string jmbg);
         void IzmeniKonobara(string jmbg, string ime, string prezime, string brojTelefona);
+      //  void UkupnoNaplaceno(string jmbg);
         List<Radnik> UcitajSveKonobare();
     }
 }

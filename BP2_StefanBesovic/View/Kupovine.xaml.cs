@@ -69,5 +69,17 @@ namespace BP2_StefanBesovic.View
         {
             this.Close();
         }
+
+        private void ButtonImeVlasnika_Click(object sender, RoutedEventArgs e)
+        {
+            if (KupacJmbgTextBox.Text == "" || NazivRestoranaTextBox.Text == "")
+            {
+                MessageBox.Show("Izaberi Kupovinu!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                factory.ImeVlasnika(KupacJmbgTextBox.Text, NazivRestoranaTextBox.Text);
+            }
+        }
     }
 }

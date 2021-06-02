@@ -12,6 +12,7 @@ namespace BP2_StefanBesovic.ViewModel.Intefaces
         void DodajKupca(string jmbg, string ime, string prezime, string brojTelefona);
         void ObrisiKupca(string jmbg);
         void IzmeniKupca(string jmbg, string ime, string prezime, string brojTelefona);
+        void UkupnaPotrosnja(string jmbg);
         List<Kupac> UcitajSveKupce();
     }
 }

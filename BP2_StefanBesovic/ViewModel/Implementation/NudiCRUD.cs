@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BP2_StefanBesovic.ViewModel.Implementation
 {
@@ -26,7 +27,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
              }
             catch
             {
-
+                MessageBox.Show("Ne moze se dodati ponuda !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -42,7 +43,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne moze se obrisati ponuda !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -56,7 +57,7 @@ namespace BP2_StefanBesovic.ViewModel.Implementation
             }
             catch
             {
-
+                MessageBox.Show("Ne mogu se ucitati ponude !", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return ponude;

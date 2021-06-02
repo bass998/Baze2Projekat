@@ -4,6 +4,9 @@ using ProjectLogic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -101,5 +104,18 @@ namespace BP2_StefanBesovic.View
         {
             this.Close();
         }
+
+        private void ButtonIzracunaj_Click(object sender, RoutedEventArgs e)
+        {
+            if (JmbgTextBox.Text == "")
+            {
+                MessageBox.Show("Izaberi KUPCA!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                factory.UkupnaPotrosnja(JmbgTextBox.Text);
+            }
+        }
+
     }
 }
