@@ -47,10 +47,10 @@
                     <DataGrid x:Name="JelaList" Background="Azure" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" Margin="-5,77.4,9.8,-264.2" Grid.ColumnSpan="4" Grid.Row="3">
                         <DataGrid.Columns>
 
-                            <DataGridTextColumn x:Name="Naziv" Header="Naziv" Binding="{Binding Naziv}" Width="120"/>
-                            <DataGridTextColumn x:Name="Cena" Header="Cena" Binding="{Binding Cena}" Width="120"/>
-                            <DataGridTextColumn x:Name="TipProizvoda" Header="TipProizvoda" Binding="{Binding TipProizvoda}" Width="120"/>
-                            <DataGridTextColumn x:Name="Sastojci" Header="Sastojci" Binding="{Binding Sastojci}" Width="120"/>
+                            <DataGridTextColumn x:Name="Naziv" Header="Naziv" Binding="{Binding Naziv}" Width="100"/>
+                            <DataGridTextColumn x:Name="Cena" Header="Cena" Binding="{Binding Cena}" Width="70"/>
+                            <DataGridTextColumn x:Name="TipProizvoda" Header="TipProizvoda" Binding="{Binding TipProizvoda}" Width="90"/>
+                            <DataGridTextColumn x:Name="Sastojci" Header="Sastojci" Binding="{Binding Sastojci}" Width="190"/>
                             <DataGridTextColumn x:Name="KuvarJmbg" Header="Kuvar jmbg" Binding="{Binding KuvarJmbg}" Width="120"/>
 
                             <DataGridTemplateColumn Width="80">
